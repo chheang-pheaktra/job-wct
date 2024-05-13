@@ -20,8 +20,9 @@
             <div class="text-center">
                 <h1 class="">Add New Career</h1>
             </div>
-            <form action="/admin/job/post" method="post">
+            <form action="{{url('/admin/job/post')}}" method="post"  enctype="multipart/form-data">
                 @csrf
+                @method('POST')
                 <div class="row">
                     <div class="col">
                         <label for="">Company</label>

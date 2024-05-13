@@ -1,7 +1,5 @@
 @extends('layout.user')
-
 @section('title', 'Profile Settings')
-
 @section('contents')
     <section>
         <div class="lg:w-[80%] md:w-[90%] xs:w-[96%] mx-auto flex gap-4">

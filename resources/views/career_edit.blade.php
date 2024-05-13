@@ -20,8 +20,9 @@
             <div class="text-center">
                 <h1 class="">Edit Career</h1>
             </div>
-            <form action="/admin/update/job/{{$career->id}}" method="post">
+            <form action="/admin/update/job/{{$career->id}}" method="post"  enctype="multipart/form-data">
                 @csrf
+                @method('POST')
                 <div class="row">
                     <div class="col">
                         <label for="">Company</label>
@@ -54,8 +55,14 @@
                 <div class="mt-4 row">
                     <div class="col">
                         <label for="formFile" class="form-label">Thumbnail</label>
-                        <input class="form-control" name="image" type="file" id="formFile">
+                        <input class="form-control" name="image" type="file" id="formFile" value="{{$career->thumbnail}}">
+                        @if ($career->thumbnail)
+                            <p>Current Image: {{ $career->thumbnail }}</p>
+                        @else
+                            <p>No image uploaded</p>
+                        @endif
                     </div>
+
                     <div class="col">
                         <label for="">Location</label>
                         <input type="text" value="{{$career->location}}" name="location" class="form-control" placeholder="Location" aria-label="Location">

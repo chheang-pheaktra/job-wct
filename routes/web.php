@@ -49,10 +49,13 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('/admin/job/show/{id}',[\App\Http\Controllers\AdminController::class,'show'])->name('admin/job/show/{id}');
     Route::get('/admin/job/edit/{id}',[\App\Http\Controllers\CareerController::class,'edit'])->name('admin/job/edit');
     Route::post('/admin/update/job/{id}',[\App\Http\Controllers\CareerController::class,'update'])->name('admin/update/job/{id}');
+    Route::get('/admin/destroy/job/{id}',[\App\Http\Controllers\CareerController::class,'destroy'])->name('admin/destroy/job/{id}');
 
     Route::get('/admin/category',[AdminController::class,'category'])->name('admin/category');
     Route::post('/admin/category/create',[\App\Http\Controllers\CategoryControll::class,'create'])->name('admin/category');
     Route::get('/admin/category/delete/{id}',[\App\Http\Controllers\CategoryControll::class,'delete'])->name('admin/category');
     Route::post('/admin/category/update/{id}',[\App\Http\Controllers\CategoryControll::class,'update'])->name('admin/category');
+
+    Route::get('/admin/apply/index',[AdminController::class,'index'])->name('Admin/apply/view');
 
 });

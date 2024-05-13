@@ -14,6 +14,7 @@ class Career extends Model
         'location',
         'available_position',
         'salary',
+        'thumbnail',
         'description'
     ];
 }

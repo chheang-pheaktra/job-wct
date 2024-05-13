@@ -39,14 +39,14 @@
                     <td>{{$career->location}}</td>
                     <td>{{$career->available_position}}</td>
                     <td>
-                        <div class="flex ">
+                        <div class="flex">
                             <a href="{{ url('/admin/job/show/' . $career->id) }}">
                                 <button class="btn btn-primary mr-2">view</button>
                             </a>
                            <a href="{{ url('/admin/job/edit/' . $career->id) }}">
                                <button class="btn btn-Secondary mr-2">edit</button>
                            </a>
-                            <a href="">
+                            <a href="{{'/admin/destroy/job/'.$career->id}}">
                                 <button class="btn btn-danger mr-2">delete</button>
                             </a>
                         </div>

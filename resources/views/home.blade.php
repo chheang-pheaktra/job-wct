@@ -13,7 +13,7 @@
                             <h1
                                 class="text-3xl sm:text-5xl md:text-5xl lg:text-4xl xl:text-5xl text-center text-black  font-black leading-10">
                                 Let's start with
-                                <span class="text-blue-600 dark:text-[#1D5D9B]">CareerQuest</span>
+                                <span class="text-blue-600 ">CareerQuest</span>
                             </h1>
                             <p class="mt-5 sm:mt-10 lg:w-10/12 text-gray-600 dark:text-gray-300 font-normal text-center text-xl">
                                 Improve your experience via us.

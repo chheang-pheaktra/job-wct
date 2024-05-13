@@ -44,6 +44,13 @@ class CareerController extends Controller
             $img->removeAttribute('src');
             $img->setArttribute('src',$image_name);
         }
+        $request->validate([
+            'thumbnail' => 'nullable|image|max:10240|mimes:jpeg,jpg,png',
+        ]);
+        $image = $request->file('image');
+        $imageName = time() . '.' . $image->getClientOriginalExtension();
+        $image->move(public_path('asset'), $imageName);
+        $imagePath = 'asset/' . $imageName; // Set the image path
         $description=$dom->saveHTML();
         Career::create([
             'bank_name'=>$request->bank,
@@ -51,38 +58,60 @@ class CareerController extends Controller
             'salary'=>$request->salary,
             'location'=>$request->location,
             'available_position'=>$request->post,
+            'thumbnail'=>$imagePath,
             'description'=>$description
         ]);
         return redirect('/admin/career');
     }
 
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
-        $career=Career::find($id);
-        $description=$request->description;
-        $dom=new  DOMDocument();
-        $dom->loadHTML($description,9);
-        $image=$dom->getElementsByTagName('img');
-        foreach ($image as $key=>$img){
-            if(strpos($img ->getAttribute('src'),'data:image/')==0){
-                $data=base64_decode(explode(',',explode(';',$img->getAttribute('src'))[1])[1]);
-                $image_name="/upload/".time().$key.'png';
-                file_put_contents(public_path().$image_name,$data);
+        $career = Career::find($id);
+        $description = $request->description;
+
+        // Process the description to handle image uploads
+        $dom = new DOMDocument();
+        $dom->loadHTML($description, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        $images = $dom->getElementsByTagName('img');
+
+        foreach ($images as $key => $img) {
+            if (strpos($img->getAttribute('src'), 'data:image/') === 0) {
+                $data = base64_decode(explode(',', explode(';', $img->getAttribute('src'))[1])[1]);
+                $image_name = "/upload/" . time() . $key . 'png';
+                file_put_contents(public_path() . $image_name, $data);
                 $img->removeAttribute('src');
-                $img->setAttribute('src',$image_name);
+                $img->setAttribute('src', $image_name);
             }
         }
-        $description=$dom->saveHTML();
-        $career->update([
-            'bank_name'=>$request->bank,
-            'position'=>$request->position,
-            'salary'=>$request->salary,
-            'location'=>$request->location,
-            'available_position'=>$request->post,
-            'description'=>$description
+
+        // Validate and handle the new image upload
+        $request->validate([
+            'thumbnail' => 'nullable|image|max:10240|mimes:jpeg,jpg,png',
         ]);
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('asset'), $imageName);
+            $imagePath = 'asset/' . $imageName; // Set the image path
+        } else {
+            $imagePath = $career->thumbnail; // Keep the existing thumbnail
+        }
+
+        // Update the career record
+        $career->update([
+            'bank_name' => $request->bank,
+            'position' => $request->position,
+            'salary' => $request->salary,
+            'location' => $request->location,
+            'available_position' => $request->post,
+            'thumbnail' => $imagePath,
+            'description' => $dom->saveHTML(),
+        ]);
+
         return redirect('/admin/career');
     }
+
 
     /**
      * Remove the specified resource from storage.

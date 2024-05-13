@@ -41,4 +41,14 @@ class AdminController extends Controller
         $career=Career::find($id);
         return view('career_edit',compact('career','category'));
     }
+    public function index()
+    {
+        return view('apply/index');
+    }
+    public function search(Request $request)
+    {
+        $search=$request->input('search');
+        $category=Category::where('name','like','%'.$search.'%')->get();
+        return view('category',compact('category'));
+    }
 }
