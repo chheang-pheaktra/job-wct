@@ -17,7 +17,8 @@ class HomeController extends Controller
     public function index()
     {
         $categories=Category::all();
-        return view('/home',compact('categories'));
+        $jobs=Career::all();
+        return view('/home',compact('categories','jobs'));
     }
 
     public function adminHome()

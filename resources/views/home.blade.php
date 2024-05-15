@@ -53,13 +53,15 @@
                     </h2>
                     <ul class="mt-10 grid grid-cols-1 items-center gap-6 text-center text-blue-900 md:grid-cols-3">
                         @foreach($categories as $category)
+                            @php
+                                $jobCount = $jobs->where('category_id', $category->id)->count();
+                             @endphp
                            <a href="#">
                                <li class="bg-blue-900 rounded-xl px-6 py-8 shadow-lg hover:scale-110 hover:duration-500">
                                    <h3 class="my-3 text-lg font-display font-medium text-white">{{$category->name}}</h3>
-                                   <p class="mt-1.5 text-sm leading-6 text-secondary-500 text-white">
-                                       1000 careers
-                                   </p>
-
+                                       <p class="mt-1.5 text-sm leading-6 text-secondary-500 text-white">
+                                           {{$jobCount}} JOB
+                                       </p>
                                </li>
                            </a>
                         @endforeach
@@ -67,86 +69,38 @@
                 </div>
             </div>
         </section>
-        <h1 class="text-2xl mt-10 font-bold ">Recently</h1>
-        <section class="mt-10 mx-auto w-full max-w-screen-xl grid grid-cols-1 gap-6  text-black md:grid-cols-3">
-            <a href="#">
-                <div class="max-w-sm bg-white border border-gray-100 rounded-lg shadow hover:shadow-lg hover:shadow-blue-100 hover:scale-110 hover:ease-in-out hover:duration-500">
-                    <img class="rounded-lg" src="https://refile.tnaot.com/image/2019/03/14/040d538a9e4f493daed216808d7fcd37.jpg?x-oss-process=image/watermark,image_RS5wbmc_eC1vc3MtcHJvY2Vzcz1pbWFnZS9yZXNpemUsUF8yMA" alt="ស្ថាបនា">
-                    <div class="p-10">
-                        <h5 class="mb-3 text-2xl font-bold tracking-tight text-blue-900">IT Engineering</h5>
-                        <div class="mb-3 font-normal text-gray-700 ">
-                            <span class="font-bold text-blue-900">Salary: </span>
-                            <span>500$</span>
+        <h1 class="text-2xl mt-10 font-bold">Recently</h1>
+        <section class="mt-10 mx-auto w-full max-w-screen-xl grid grid-cols-1 gap-6 text-black md:grid-cols-3">
+            @foreach($jobs as $job)
+                @if($job->created_at->isToday())
+                    <a href="#">
+                        <div class="max-w-sm bg-white border border-gray-100 rounded-lg shadow hover:shadow-lg hover:shadow-blue-100 hover:scale-110 hover:ease-in-out hover:duration-500">
+                            <img class="rounded-lg" src="{{ asset($job->thumbnail) }}" alt="{{ $job->position }}">
+                            <div class="p-10">
+                                <h5 class="mb-3 text-2xl font-bold tracking-tight text-blue-900">{{ $job->position }}</h5>
+                                <div class="mb-3 font-normal text-gray-700">
+                                    <span class="font-bold text-blue-900">Salary: </span>
+                                    <span>{{ $job->salary }}</span>
+                                </div>
+                                <div class="mb-3 font-normal text-gray-700">
+                                    <span class="font-bold text-blue-900">Type of Work: </span>
+                                    <span>{{ $job->type_of_work }}</span>
+                                </div>
+                                <div class="mb-3 font-normal">
+                                    <span class="font-bold text-blue-900">Location: </span>
+                                    <span>{{ $job->location }}</span>
+                                </div>
+                                <div class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-900 rounded-lg focus:ring-blue-300">
+                                    Testing
+                                </div>
+                                <div class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-900 rounded-lg focus:ring-blue-300">
+                                    Network
+                                </div>
+                            </div>
                         </div>
-                        <div class="mb-3 font-normal text-gray-700 ">
-                            <span class="font-bold text-blue-900">Type of Work: </span>
-                            <span>Full Time</span>
-                        </div>
-                        <div class="mb-3 font-normal ">
-                            <span class="font-bold  text-blue-900">Location: </span>
-                            <span>Phnom Penh</span>
-                        </div>
-                        <div class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-900 rounded-lg  focus:ring-blue-300 ">
-                            Testing
-                        </div>
-                        <div class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-900 rounded-lg  focus:ring-blue-300 ">
-                            Network
-                        </div>
-                    </div>
-                </div>
-            </a>
-            <a href="#">
-                <div class="max-w-sm bg-white border border-gray-100 rounded-lg shadow hover:shadow-lg hover:shadow-blue-100 hover:scale-110 hover:ease-in-out hover:duration-500">
-                    <img class="rounded-lg" src="https://refile.tnaot.com/image/2019/03/14/040d538a9e4f493daed216808d7fcd37.jpg?x-oss-process=image/watermark,image_RS5wbmc_eC1vc3MtcHJvY2Vzcz1pbWFnZS9yZXNpemUsUF8yMA" alt="ស្ថាបនា">
-                    <div class="p-10">
-                        <h5 class="mb-3 text-2xl font-bold tracking-tight text-blue-900">IT Engineering</h5>
-                        <div class="mb-3 font-normal text-gray-700 ">
-                            <span class="font-bold text-blue-900">Salary: </span>
-                            <span>500$</span>
-                        </div>
-                        <div class="mb-3 font-normal text-gray-700 ">
-                            <span class="font-bold text-blue-900">Type of Work: </span>
-                            <span>Full Time</span>
-                        </div>
-                        <div class="mb-3 font-normal ">
-                            <span class="font-bold  text-blue-900">Location: </span>
-                            <span>Phnom Penh</span>
-                        </div>
-                        <div class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-900 rounded-lg  focus:ring-blue-300 ">
-                            Testing
-                        </div>
-                        <div class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-900 rounded-lg  focus:ring-blue-300 ">
-                            Network
-                        </div>
-                    </div>
-                </div>
-            </a>
-            <a href="#">
-                <div class="max-w-sm bg-white border border-gray-100 rounded-lg shadow hover:shadow-lg hover:shadow-blue-100 hover:scale-110 hover:ease-in-out hover:duration-500">
-                    <img class="rounded-lg" src="https://refile.tnaot.com/image/2019/03/14/040d538a9e4f493daed216808d7fcd37.jpg?x-oss-process=image/watermark,image_RS5wbmc_eC1vc3MtcHJvY2Vzcz1pbWFnZS9yZXNpemUsUF8yMA" alt="ស្ថាបនា">
-                    <div class="p-10">
-                        <h5 class="mb-3 text-2xl font-bold tracking-tight text-blue-900">IT Engineering</h5>
-                        <div class="mb-3 font-normal text-gray-700 ">
-                            <span class="font-bold text-blue-900">Salary: </span>
-                            <span>500$</span>
-                        </div>
-                        <div class="mb-3 font-normal text-gray-700 ">
-                            <span class="font-bold text-blue-900">Type of Work: </span>
-                            <span>Full Time</span>
-                        </div>
-                        <div class="mb-3 font-normal ">
-                            <span class="font-bold  text-blue-900">Location: </span>
-                            <span>Phnom Penh</span>
-                        </div>
-                        <div class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-900 rounded-lg  focus:ring-blue-300 ">
-                            Testing
-                        </div>
-                        <div class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-900 rounded-lg  focus:ring-blue-300 ">
-                            Network
-                        </div>
-                    </div>
-                </div>
-            </a>
+                    </a>
+                @endif
+            @endforeach
         </section>
         <section class="mt-10">
             <div class="pt-12 bg-gray-50 sm:pt-16">

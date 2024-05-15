@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Career;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -19,6 +20,7 @@ class UserController extends Controller
     }
     public function job()
     {
-        return view('job/index');
+        $jobs=Career::all();
+        return view('job/index',compact('jobs'));
     }
 }
