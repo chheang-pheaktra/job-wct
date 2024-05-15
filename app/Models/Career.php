@@ -9,6 +9,7 @@ class Career extends Model
 {
     use HasFactory;
     protected $fillable=[
+        'category_id',
         'bank_name',
         'position',
         'location',
@@ -17,4 +18,8 @@ class Career extends Model
         'thumbnail',
         'description'
     ];
+    public function category()
+    {
+        return $this->belongsTo(Category::class,);
+    }
 }

@@ -40,7 +40,7 @@
                 <div class="row mt-4">
                     <div class="col">
                         <label for="inputState" class="form-label">Categories</label>
-                        <select  class="form-select form-select-lg mb-3" aria-label="Large select example">
+                        <select name="category" class="form-select form-select-lg mb-3" aria-label="Large select example">
                             <option selected>Open this select menu</option>
                            @foreach($category as $categories)
                                 <option name="{{$categories->name}}" value="{{$categories->id}}">{{$categories->name}}</option>

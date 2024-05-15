@@ -57,5 +57,6 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::post('/admin/category/update/{id}',[\App\Http\Controllers\CategoryControll::class,'update'])->name('admin/category');
 
     Route::get('/admin/apply/index',[AdminController::class,'index'])->name('Admin/apply/view');
+    Route::get('/admin/testing/index',[AdminController::class,'test_index']);
 
 });

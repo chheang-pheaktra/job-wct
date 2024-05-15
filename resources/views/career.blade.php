@@ -21,6 +21,7 @@
            <thead>
            <tr>
                <th scope="col">ID</th>
+               <th scope="col">Category Name</th>
                <th scope="col">Company</th>
                <th scope="col">Position</th>
                <th scope="col">Salary</th>
@@ -33,6 +34,7 @@
             @foreach($job as $career )
                 <tr>
                     <td>{{$career->id}}</td>
+                    <td>{{$career->category->name}}</td>
                     <td>{{$career->bank_name}}</td>
                     <td>{{$career->position}}</td>
                     <td>{{$career->salary}}</td>

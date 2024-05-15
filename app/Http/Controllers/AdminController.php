@@ -21,9 +21,8 @@ class AdminController extends Controller
     }
     public function career()
     {
-        $category=Category::all();
         $job=Career::all();
-        return view('career',compact('category','job'));
+        return view('career',compact('job'));
     }
     public function create()
     {
@@ -50,5 +49,9 @@ class AdminController extends Controller
         $search=$request->input('search');
         $category=Category::where('name','like','%'.$search.'%')->get();
         return view('category',compact('category'));
+    }
+    public function test_index()
+    {
+        return view('testing/index');
     }
 }
