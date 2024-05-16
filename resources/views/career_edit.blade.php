@@ -43,7 +43,7 @@
                         <select  class="form-select form-select-lg mb-3" aria-label="Large select example">
                             <option selected>Open this select menu</option>
                             @foreach($categories as $category)
-                                <option name="{{$category->name}}" value="{{$category->id}}">{{$category->name}}</option>
+                                <option name="{{$category->name}}"  >{{$category->name}}</option>
                             @endforeach
                         </select>
                     </div>

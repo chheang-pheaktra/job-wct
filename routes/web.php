@@ -36,6 +36,7 @@ Route::controller(AuthController::class)->group(function () {
     Route::middleware(['auth', 'user-access:user'])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/profile', [UserController::class, 'userprofile'])->name('profile');
+    Route::get('/resume',[UserController::class,'resume']);
 });
 
 //Admin Routes List
