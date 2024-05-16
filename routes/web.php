@@ -38,7 +38,7 @@ Route::controller(AuthController::class)->group(function () {
     Route::get('/profile', [UserController::class, 'userprofile'])->name('profile');
    /* Route::get('/search',[HomeController::class,'search']);*/
     Route::get('/resume',[UserController::class,'resume']);
-    Route::get('create_resume',[UserController::class,'create_resume']);
+    Route::get('/create_resume',[UserController::class,'create_resume']);
 });
 
 //Admin Routes List
