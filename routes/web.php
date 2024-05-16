@@ -36,7 +36,9 @@ Route::controller(AuthController::class)->group(function () {
     Route::middleware(['auth', 'user-access:user'])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/profile', [UserController::class, 'userprofile'])->name('profile');
+   /* Route::get('/search',[HomeController::class,'search']);*/
     Route::get('/resume',[UserController::class,'resume']);
+    Route::get('create_resume',[UserController::class,'create_resume']);
 });
 
 //Admin Routes List
@@ -56,7 +58,8 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::post('/admin/category/create',[\App\Http\Controllers\CategoryControll::class,'create'])->name('admin/category');
     Route::get('/admin/category/delete/{id}',[\App\Http\Controllers\CategoryControll::class,'delete'])->name('admin/category');
     Route::post('/admin/category/update/{id}',[\App\Http\Controllers\CategoryControll::class,'update'])->name('admin/category');
-
+    Route::get('/admin/search/category',[AdminController::class,'search']);
+    Route::get('/admin/search/career',[AdminController::class,'search_career']);
     Route::get('/admin/apply/index',[AdminController::class,'index'])->name('Admin/apply/view');
     Route::get('/admin/testing/index',[AdminController::class,'test_index']);
 
