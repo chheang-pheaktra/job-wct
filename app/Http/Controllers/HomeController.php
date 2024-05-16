@@ -20,6 +20,14 @@ class HomeController extends Controller
         $jobs=Career::all();
         return view('/home',compact('categories','jobs'));
     }
+    /*public function search(Request $request)
+    {
+        $search=$request->input('search');
+        $jobs=Career::where('position','like','%'.$search.'%')
+            ->orWhere('bank_name','like','%'.$search.'%')
+            ->get();
+        return view('/home',compact('jobs'));
+    }*/
 
     public function adminHome()
     {

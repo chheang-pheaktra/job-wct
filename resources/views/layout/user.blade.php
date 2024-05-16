@@ -41,7 +41,7 @@
                                             <a href="#" class="block px-4 py-2 text-sm text-white hover:bg-gray-100 hover:text-gray-500">Settings</a>
                                         </li>
                                         <li>
-                                            <a href="#" class="block px-4 py-2 text-sm text-white hover:bg-gray-100 hover:text-gray-500">Resume</a>
+                                            <a href="{{'/resume'}}" class="block px-4 py-2 text-sm text-white hover:bg-gray-100 hover:text-gray-500">Resume</a>
                                         </li>
                                         <li>
                                             <a href="{{'/logout'}}" class="block px-4 py-2 text-sm text-white hover:bg-gray-100 hover:text-gray-500 ">Sign out</a>

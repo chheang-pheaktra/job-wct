@@ -46,10 +46,22 @@ class AdminController extends Controller
     }
     public function search(Request $request)
     {
-        $search=$request->input('search');
-        $category=Category::where('name','like','%'.$search.'%')->get();
-        return view('category',compact('category'));
+        $search = $request->input('search');
+        // Search for categories and careers
+        $category = Category::where('name', 'like', '%' . $search . '%')->get();
+
+
+        return view('category', compact('category', 'search'));
     }
+    public function search_career(Request $request)
+    {
+        $search = $request->input('search');
+        $job= Career::where('position', 'like', '%' . $search . '%')
+            ->orWhere('bank_name', 'like', '%' . $search . '%')
+            ->get();
+        return view('career',compact('job'));
+    }
+
     public function test_index()
     {
         return view('testing/index');
