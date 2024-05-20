@@ -23,7 +23,12 @@ class UserController extends Controller
         $jobs=Career::all();
         return view('job/index',compact('jobs'));
     }
-
+    public function view_category($id)
+    {
+        $jobs=Career::get();
+        $category=Category::find($id);
+        return view('category_view',compact('jobs','category'));
+    }
     public function resume()
     {
         return view('/menu-profile/resume');

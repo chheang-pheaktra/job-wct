@@ -17,7 +17,8 @@ class AdminController extends Controller
     public function category()
     {
         $category=Category::all();
-        return view('category',compact('category'));
+        $job=Career::all();
+        return view('category',compact('category','job'));
     }
     public function career()
     {

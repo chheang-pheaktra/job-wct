@@ -31,6 +31,15 @@ Route::controller(AuthController::class)->group(function () {
     Route::post('login', 'loginAction')->name('login.action');
     Route::get('logout', 'logout')->middleware('auth')->name('logout');
 });
+Route::controller(\App\Http\Controllers\Auth\ResetPasswordController::class)->group(function () {
+    Route::get('reset-password/{token}', 'showResetForm')->name('password.reset');
+    Route::post('reset-password', 'reset')->name('password.update');
+});
+
+Route::controller(\App\Http\Controllers\Auth\ForgotPasswordController::class)->group(function () {
+    Route::get('forgot_password', 'showLinkRequestForm')->name('password.request');
+    Route::post('forgot_password', 'sendResetLinkEmail')->name('password.email');
+});
 
 //Normal Users Routes List
     Route::middleware(['auth', 'user-access:user'])->group(function () {
@@ -39,6 +48,7 @@ Route::controller(AuthController::class)->group(function () {
    /* Route::get('/search',[HomeController::class,'search']);*/
     Route::get('/resume',[UserController::class,'resume']);
     Route::get('/create_resume',[UserController::class,'create_resume']);
+    Route::get('/category_view/{id}/{name}',[UserController::class,'view_category']);
 });
 
 //Admin Routes List
