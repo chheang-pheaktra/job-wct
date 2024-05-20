@@ -56,14 +56,15 @@
                             @php
                                 $jobCount = $jobs->where('category_id', $category->id)->count();
                              @endphp
-                           <a href="#">
-                               <li class="bg-blue-900 rounded-xl px-6 py-8 shadow-lg hover:scale-110 hover:duration-500">
-                                   <h3 class="my-3 text-lg font-display font-medium text-white">{{$category->name}}</h3>
-                                       <p class="mt-1.5 text-sm leading-6 text-secondary-500 text-white">
-                                           {{$jobCount}} JOB
-                                       </p>
-                               </li>
-                           </a>
+                            <a href="{{ url('category_view/' . $category->id . '/' . $category->name) }}">
+                                <li class="bg-blue-900 rounded-xl px-6 py-8 shadow-lg hover:scale-110 hover:duration-500">
+                                    <h3 class="my-3 text-lg font-display font-medium text-white">{{ $category->name }}</h3>
+                                    <p class="mt-1.5 text-sm leading-6 text-secondary-500 text-white">
+                                        {{ $jobCount }} JOB
+                                    </p>
+                                </li>
+                            </a>
+
                         @endforeach
                     </ul>
                 </div>
@@ -72,7 +73,7 @@
         <h1 class="text-2xl mt-10 font-bold">Recently</h1>
         <section class="mt-10 mx-auto w-full max-w-screen-xl grid grid-cols-1 gap-6 text-black md:grid-cols-3">
             @foreach($jobs as $job)
-                @if($job->created_at->isToday()+2)
+                @if($job->created_at->isToday())
                     <a href="#">
                         <div class="max-w-sm bg-white border border-gray-100 rounded-lg shadow hover:shadow-lg hover:shadow-blue-100 hover:scale-110 hover:ease-in-out hover:duration-500">
                             <img class="rounded-lg" src="{{ asset($job->thumbnail) }}" alt="{{ $job->position }}">

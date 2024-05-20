@@ -80,7 +80,12 @@
                         @endphp
                         <td class="px-6 py-4 whitespace-nowrap">{{$categories->id}}</td>
                         <td class="px-6 py-4 whitespace-nowrap">{{$categories->name}}</td>
-                        <td class="px-6 py-4 whitespace-nowrap">10</td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            @php
+                                $jobCount =$job->where('category_id', $categories->id)->count();
+                            @endphp
+                            {{$jobCount}} Jobs
+                        </td>
                         <td class="px-6 py-4 whitespace-nowrap">
 
                             @if($categoryExist)
