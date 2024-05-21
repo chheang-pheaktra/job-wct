@@ -20,12 +20,12 @@ class UserController extends Controller
     }
     public function job()
     {
-        $jobs=Career::all();
+        $jobs=Career::oldest()->paginate(6);
         return view('job/index',compact('jobs'));
     }
     public function view_category($id)
     {
-        $jobs=Career::get();
+        $jobs=Career::oldest()->paginate(7);
         $category=Category::find($id);
         return view('category_view',compact('jobs','category'));
     }

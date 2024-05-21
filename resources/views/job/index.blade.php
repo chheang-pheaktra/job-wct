@@ -42,7 +42,7 @@
                 @foreach($jobs as $job)
                         <a href="#">
                             <div class="max-w-sm bg-white border border-gray-100 rounded-lg shadow hover:shadow-lg hover:shadow-blue-100 hover:scale-110 hover:ease-in-out hover:duration-500">
-                                <img class="rounded-lg" src="{{ asset($job->thumbnail) }}" alt="{{ $job->position }}">
+                                <img class="rounded-lg w-full h-48 object-cover" src="{{ asset($job->thumbnail) }}" alt="{{ $job->position }}">
                                 <div class="p-10">
                                     <h5 class="mb-3 text-2xl font-bold tracking-tight text-blue-900">{{ $job->position }}</h5>
                                     <div class="mb-3 font-normal text-gray-700">
@@ -67,6 +67,9 @@
                             </div>
                         </a>
                 @endforeach
+            </section>
+            <section class="mt-10 ">
+                {!! $jobs->links() !!}
             </section>
         </main>
     @endsection

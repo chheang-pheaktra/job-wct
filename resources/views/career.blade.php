@@ -59,4 +59,7 @@
             </tbody>
         </table>
     </section>
+    <section>
+        {!! $job->links() !!}
+    </section>
 @endsection
