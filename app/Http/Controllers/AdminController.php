@@ -22,7 +22,7 @@ class AdminController extends Controller
     }
     public function career()
     {
-        $job=Career::all();
+        $job=Career::oldest()->paginate(10);
         return view('career',compact('job'));
     }
     public function create()
