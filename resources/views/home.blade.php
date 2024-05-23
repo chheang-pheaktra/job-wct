@@ -74,7 +74,7 @@
         <section class="mt-10 mx-auto w-full max-w-screen-xl grid grid-cols-1 gap-6 text-black md:grid-cols-3">
             @foreach($jobs as $job)
                 @if($job->created_at->isToday())
-                    <a href="#">
+                    <a href="{{'/jobs/view/' .$job->id}}">
                         <div class="max-w-sm bg-white border border-gray-100 rounded-lg shadow hover:shadow-lg hover:shadow-blue-100 hover:scale-110 hover:ease-in-out hover:duration-500">
                             <img class="rounded-lg w-full h-48 object-cover" src="{{ asset($job->thumbnail) }}" alt="{{ $job->position }}">
                             <div class="p-10">
