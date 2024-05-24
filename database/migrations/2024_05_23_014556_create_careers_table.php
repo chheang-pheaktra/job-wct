@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('careers', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('category_id');
             $table->string('bank_name')->nullable();
             $table->string('position')->nullable();
             $table->string('location')->nullable();
@@ -20,6 +21,7 @@ return new class extends Migration
             $table->string('salary')->nullable();
             $table->string('thumbnail')->nullable();
             $table->longText('description');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();
         });
     }
