@@ -20,8 +20,9 @@ class UserController extends Controller
     }
     public function job()
     {
+        $categories=Category::get();
         $jobs=Career::OrderBy('created_at','asc')->paginate(6);
-        return view('job/index',compact('jobs'));
+        return view('job/index',compact('jobs','categories'));
     }
     public function view_job($id)
     {
@@ -33,6 +34,12 @@ class UserController extends Controller
         $jobs=Career::OrderBy('created_at','asc')->paginate(8);
         $category=Category::find($id);
         return view('category_view',compact('jobs','category'));
+    }
+    public function category()
+    {
+        $jobs=Career::OrderBy('created_at','asc')->paginate(8);
+        $categories=Category::OrderBy('created_at','asc')->paginate(6);
+        return view('Category/index',compact('categories','jobs'));
     }
     public function resume()
     {

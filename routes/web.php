@@ -50,6 +50,7 @@ Route::controller(\App\Http\Controllers\Auth\ForgotPasswordController::class)->g
     Route::get('/create_resume',[UserController::class,'create_resume']);
     Route::get('/category_view/{id}/{name}',[UserController::class,'view_category']);
     Route::get('/jobs/view/{id}',[UserController::class,'view_job']);
+    Route::get('/category',[UserController::class,'category']);
 });
 
 //Admin Routes List

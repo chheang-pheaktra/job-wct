@@ -140,4 +140,7 @@
                 </tbody>
             </table>
     </div>
+   <section>
+       {!! $category->links() !!}
+   </section>
 @endsection

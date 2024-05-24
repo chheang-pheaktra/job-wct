@@ -71,7 +71,7 @@
                                 <a href="#" class="block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 ">Test</a>
                             </li>
                             <li>
-                                <a href="{{'/job'}}" class="block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Categories</a>
+                                <a href="{{'/category'}}" class="block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Categories</a>
                             </li>
                             <li>
                                 <a href="{{'/job'}}" class="block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Jobs</a>

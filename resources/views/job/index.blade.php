@@ -1,10 +1,27 @@
+<title>Jobs</title>
 @extends('layout.user')
 <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 <script src="https://cdn.tailwindcss.com"></script>
     @section('contents')
         <main class="mt-10 md:mt-top-content mb-top-title p-3">
-            <section class="mx-auto  max-w-screen-xl">
+            <section>
+                <form class="flex flex-col justify-center md:flex-row gap-6">
+                    <div class="flex ">
+                        <input type="text" placeholder="Search for the tool you like"
+                               class="w-full md:w-80 px-3 h-10 rounded-l border-2 border-sky-500 focus:outline-none focus:border-sky-500"
+                        >
+                        <button type="submit" class="bg-sky-500 text-white rounded-r px-2 md:px-3 py-0 md:py-1">Search</button>
+                    </div>
+                    <select  name="jobs" class=" h-10 border-2 border-sky-500 focus:outline-none focus:border-sky-500 text-sky-500 rounded px-2 md:px-3 py-0 md:py-1 tracking-wider">
+                        <option value="All" selected="">All</option>
+                        @foreach($categories as $category)
+                            <option value="{{$category->id}}" >{{$category->name}}</option>
+                        @endforeach
+                    </select>
+                </form>
+            </section>
+            <section class="mx-auto max-w-screen-xl mt-10">
                 <h2 class="text-left  text-3xl font-bold tracking-tight text-slate-900 md:text-4xl">
                     Jobs Listing
                 </h2>
