@@ -16,7 +16,7 @@ class AdminController extends Controller
     }
     public function category()
     {
-        $category=Category::oldest()->paginate(6);
+        $category=Category::all();
         $job=Career::all();
         return view('category',compact('category','job'));
     }
@@ -66,9 +66,5 @@ class AdminController extends Controller
     public function test_index()
     {
         return view('testing/index');
-    }
-    public function level()
-    {
-        return view('level');
     }
 }

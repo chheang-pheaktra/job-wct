@@ -4,7 +4,7 @@
 <script src="https://cdn.tailwindcss.com"></script>
 @section('title', 'Home')
 @section('contents')
-    <main class="mt-10">
+    <main class="">
         <section>
             <div >
                 <div >
@@ -60,7 +60,7 @@
                                 <li class="bg-blue-900 rounded-xl px-6 py-8 shadow-lg hover:scale-110 hover:duration-500">
                                     <h3 class="my-3 text-lg font-display font-medium text-white">{{ $category->name }}</h3>
                                     <p class="mt-1.5 text-sm leading-6 text-secondary-500 text-white">
-                                        {{ $jobCount }} Jobs
+                                        {{ $jobCount }} JOB
                                     </p>
                                 </li>
                             </a>
@@ -74,9 +74,9 @@
         <section class="mt-10 mx-auto w-full max-w-screen-xl grid grid-cols-1 gap-6 text-black md:grid-cols-3">
             @foreach($jobs as $job)
                 @if($job->created_at->isToday())
-                    <a href="{{'/jobs/view/' .$job->id}}">
+                    <a href="#">
                         <div class="max-w-sm bg-white border border-gray-100 rounded-lg shadow hover:shadow-lg hover:shadow-blue-100 hover:scale-110 hover:ease-in-out hover:duration-500">
-                            <img class="rounded-t-lg w-full h-48 object-cover" src="{{ asset($job->thumbnail) }}" alt="{{ $job->position }}">
+                            <img class="rounded-lg w-full h-48 object-cover" src="{{ asset($job->thumbnail) }}" alt="{{ $job->position }}">
                             <div class="p-10">
                                 <h5 class="mb-3 text-2xl font-bold tracking-tight text-blue-900">{{ $job->position }}</h5>
                                 <div class="mb-3 font-normal text-gray-700">
@@ -87,12 +87,17 @@
                                     <span class="font-bold text-blue-900">Type of Work: </span>
                                     <span>{{ $job->type_of_work }}</span>
                                 </div>
-                                <div class="font-normal">
+                                <div class="mb-3 font-normal">
                                     <span class="font-bold text-blue-900">Location: </span>
                                     <span>{{ $job->location }}</span>
                                 </div>
+                                <div class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-900 rounded-lg focus:ring-blue-300">
+                                    Testing
+                                </div>
+                                <div class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-900 rounded-lg focus:ring-blue-300">
+                                    Network
+                                </div>
                             </div>
-                            <div class=" px-3 py-4 text-sm font-medium text-center text-gray-600 bg-blue-300 rounded-b-lg focus:ring-blue-300">{{date('d-m-y', strtotime($job->created_at))}}</div>
                         </div>
                     </a>
                 @endif
@@ -190,18 +195,13 @@
             <span class="sr-only">Previous</span>
         </span>
                 </button>
-                <button type="button"
-                        class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-                        data-carousel-next>
-                    <span
-                        class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                        <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true"
-                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                  d="m1 9 4-4-4-4"/>
-                        </svg>
-                        <span class="sr-only">Next</span>
-                    </span>
+                <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+            </svg>
+            <span class="sr-only">Next</span>
+        </span>
                 </button>
             </div>
 
