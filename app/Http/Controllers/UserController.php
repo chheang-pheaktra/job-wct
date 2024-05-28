@@ -7,6 +7,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use PHPUnit\TextUI\Application;
 
 class UserController extends Controller
 {
@@ -48,5 +49,31 @@ class UserController extends Controller
     public function create_resume()
     {
         return view('/menu-profile/create_resume');
+    }
+    public function setting()
+    {
+        return view('/menu-profile/setting');
+    }
+    public function apply(Request $request, $id)
+    {
+        $request->validate([
+            'cv' => 'required|mimes:pdf,doc,docx|max:2048',
+        ]);
+
+        $jobs = Career::findOrFail($id);
+
+        // Handle file upload
+        if ($request->hasFile('cv')) {
+            $cvPath = $request->file('cv')->store('cvs', 'public');
+
+            // Save application to the database
+            Application::create([
+                'job_id' => $job->id,
+                'user_id' => auth()->id(), // Assuming the user is authenticated
+                'cv' => $cvPath,
+            ]);
+        }
+
+        return redirect()->route('jobs.show', $jobs->id)->with('success', 'Your application has been submitted successfully!');
     }
 }

@@ -4,7 +4,7 @@
 <script src="https://cdn.tailwindcss.com"></script>
 @section('title', 'Home')
 @section('contents')
-    <main class="">
+    <main class="mt-10">
         <section>
             <div >
                 <div >
@@ -60,7 +60,7 @@
                                 <li class="bg-blue-900 rounded-xl px-6 py-8 shadow-lg hover:scale-110 hover:duration-500">
                                     <h3 class="my-3 text-lg font-display font-medium text-white">{{ $category->name }}</h3>
                                     <p class="mt-1.5 text-sm leading-6 text-secondary-500 text-white">
-                                        {{ $jobCount }} JOB
+                                        {{ $jobCount }} Jobs
                                     </p>
                                 </li>
                             </a>

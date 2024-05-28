@@ -51,7 +51,10 @@ Route::controller(\App\Http\Controllers\Auth\ForgotPasswordController::class)->g
     Route::get('/category_view/{id}/{name}',[UserController::class,'view_category']);
     Route::get('/jobs/view/{id}',[UserController::class,'view_job']);
     Route::get('/category',[UserController::class,'category']);
-});
+    Route::get('/setting',[UserController::class,'setting']);
+    Route::post('/jobs/{job}/apply', [UserController::class, 'apply'])->name('job.apply');
+
+    });
 
 //Admin Routes List
 Route::middleware(['auth', 'user-access:admin'])->group(function () {
@@ -74,5 +77,6 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('/admin/search/career',[AdminController::class,'search_career']);
     Route::get('/admin/apply/index',[AdminController::class,'index'])->name('Admin/apply/view');
     Route::get('/admin/testing/index',[AdminController::class,'test_index']);
+    Route::get('/admin/level',[AdminController::class,'level']);
 
 });

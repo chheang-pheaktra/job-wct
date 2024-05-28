@@ -1,10 +1,8 @@
 @extends('layout.user')
-
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
 @section('contents')
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-
     <section>
         <div class="rounded-xl px-2 py-10">
             <div id="features" class="mx-auto max-w-6xl">

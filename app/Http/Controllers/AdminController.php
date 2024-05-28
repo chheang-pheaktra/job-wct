@@ -67,4 +67,8 @@ class AdminController extends Controller
     {
         return view('testing/index');
     }
+    public function level()
+    {
+        return view('level');
+    }
 }

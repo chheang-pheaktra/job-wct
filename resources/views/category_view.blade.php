@@ -4,7 +4,7 @@
 <script src="https://cdn.tailwindcss.com"></script>
 @section('contents')
     <section>
-        <nav class="flex mb-5" aria-label="Breadcrumb">
+        <nav class="flex mb-5 mt-16" aria-label="Breadcrumb">
             <ol class="inline-flex items-center space-x-1 md:space-x-2">
                 <li class="inline-flex items-center">
                     <a href="/" class="text-gray-700 hover:text-gray-900 inline-flex items-center">
