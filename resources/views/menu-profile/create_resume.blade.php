@@ -115,7 +115,7 @@
                         </div>
 
             </div>
-            <div class="p-4   ">
+            <div class="p-4 mx-auto">
                 <details class="mb-2">
                     <summary class=" p-4 rounded-lg cursor-pointer shadow-md mb-4">
                         <span class="font-semibold">Summary *</span>
@@ -180,7 +180,7 @@
                         </div>
             </div>
 
-            <div class="p-4   ">
+            <div class="p-4   mx-auto">
                 <details class="mb-2">
                     <summary class=" p-4 rounded-lg cursor-pointer shadow-md mb-4">
                         <span class="font-semibold">Educational History *</span>
