@@ -51,6 +51,10 @@
                         <label for="">Salary</label>
                         <input type="text" name="salary" class="form-control">
                     </div>
+                    <div class="col">
+                        <label for="">Level</label>
+                        <input type="text" name="salary" class="form-control">
+                    </div>
                 </div>
                 <div class="mt-4 row">
                     <div class="col">

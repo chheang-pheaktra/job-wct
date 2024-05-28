@@ -53,6 +53,7 @@ class CareerController extends Controller
         $imagePath = 'asset/' . $imageName; // Set the image path
         $description=$dom->saveHTML();
         Career::create([
+            'level_id'=>$request->level,
             'category_id'=>$request->category,
             'bank_name'=>$request->bank,
             'position'=>$request->position,

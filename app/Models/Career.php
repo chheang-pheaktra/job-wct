@@ -9,6 +9,7 @@ class Career extends Model
 {
     use HasFactory;
     protected $fillable=[
+        'level_id',
         'category_id',
         'bank_name',
         'position',
