@@ -37,8 +37,11 @@
                     <div class="mx-auto max-w-6xl ">
                         <ul class="mt-1 grid grid-cols-1 gap-6 text-center text-slate-700 md:grid-cols-3">
                            @foreach($level as $levels)
+                                @php
+                                    $filteredJobs = $jobs->where('level_id', $levels->id);
+                                @endphp
                                 <li class="rounded-xl bg-blue-900 px-6 py-8 shadow-sm max-h-40">
-                                    <a href="">
+                                    <a href="/view_level/jobs/{{$levels->id}}">
                                         <img src="https://www.svgrepo.com/show/530438/ddos-protection.svg" alt="" class="mx-auto h-10 w-10">
                                         <h3 class="my-3 font-display font-medium text-white">{{$levels->name}}</h3>
                                     </a>

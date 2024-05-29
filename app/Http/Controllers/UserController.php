@@ -39,6 +39,12 @@ class UserController extends Controller
         $category=Category::find($id);
         return view('category_view',compact('jobs','category'));
     }
+    public function view_level($id)
+    {
+        $jobs=Career::OrderBy('created_at','asc')->paginate(8);
+        $level=Level::find($id);
+        return view('apply/Level-job',compact('jobs','level'));
+    }
     public function category()
     {
         $jobs=Career::OrderBy('created_at','asc')->paginate(8);
