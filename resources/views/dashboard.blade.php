@@ -55,8 +55,8 @@
                                 </path>
                             </svg></div>
                <div class="px-4 text-gray-700">
-                            <h3 class="text-sm tracking-wider">Apply</h3>
-                            <p class="text-3xl">1000</p>
+                            <h3 class="text-sm tracking-wider">Applied</h3>
+                            <p class="text-3xl">{{$apply->count()}}</p>
                         </div>
                     </div>
                 </div>

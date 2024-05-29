@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Apply;
 use App\Models\Career;
 use App\Models\Category;
 use App\Models\User;
@@ -22,9 +23,10 @@ class HomeController extends Controller
     }
     public function adminHome()
     {
+        $apply=Apply::all();
         $users=User::all();
         $job=Career::all();
         $category=Category::all();
-        return view('dashboard',compact('users','job','category'));
+        return view('dashboard',compact('users','job','category','apply'));
     }
 }

@@ -43,7 +43,7 @@
                         <select name="level" class="form-select form-select-lg mb-3" aria-label="Large select example">
                             <option selected>Open this select menu</option>
                             @foreach($level as $levels)
-                                <option value="{{$levels->id}}"  >{{$levels->name}}</option>
+                                <option value="{{$levels->id}}" {{$career->level_id == $levels->id ? 'selected': ''}}  >{{$levels->name}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -56,7 +56,7 @@
                         <select name="category" class="form-select form-select-lg mb-3" aria-label="Large select example">
                             <option selected>Open this select menu</option>
                             @foreach($categories as $category)
-                                <option value="{{$category->id}}"  >{{$category->name}}</option>
+                                <option value="{{$category->id}}" {{$career->category_id ==$category->id ? 'selected':''}}>{{$category->name}}</option>
                             @endforeach
                         </select>
                     </div>
