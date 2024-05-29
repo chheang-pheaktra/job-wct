@@ -27,10 +27,13 @@
                         <span>Full Time</span>
                     </div>
                     <div class="font-normal text-gray-700 ">
-                        <span>Level</span>
-                        <span>junior</span>
+                        <span>Level:</span>
+                        <span>{{$career->level->name}}</span>
                     </div>
-                    <div class="font-normal text-gray-700">Category: Network Engineering</div>
+                    <div class="font-normal text-gray-700">
+                        <span>Category: </span>
+                        <span>{{$career->category->name}}</span>
+                    </div>
                     <div class="font-normal text-gray-700">Location: Phnom Penh</div>
                     <div class="font-normal text-gray-700 ">Available Position: 5 px</div>
                     <div class="font-normal text-gray-700">Required Skills: Networking,

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Career;
 use App\Models\Category;
+use App\Models\Level;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -28,7 +29,8 @@ class AdminController extends Controller
     public function create()
     {
         $category=Category::all();
-        return view('career_create',compact('category'));
+        $level=Level::all();
+        return view('career_create',compact('category','level'));
     }
     public function show(string $id)
     {
@@ -66,9 +68,5 @@ class AdminController extends Controller
     public function test_index()
     {
         return view('testing/index');
-    }
-    public function level()
-    {
-        return view('level');
     }
 }

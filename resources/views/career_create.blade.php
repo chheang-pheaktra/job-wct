@@ -39,11 +39,11 @@
                 </div>
                 <div class="row mt-4">
                     <div class="col">
-                        <label for="inputState" class="form-label">Categories</label>
-                        <select name="category" class="form-select form-select-lg mb-3" aria-label="Large select example">
+                        <label for="inputState" class="form-label">Level</label>
+                        <select name="level" class="form-select form-select-lg mb-3" aria-label="Large select example">
                             <option selected>Open this select menu</option>
-                           @foreach($category as $categories)
-                                <option name="{{$categories->name}}" value="{{$categories->id}}">{{$categories->name}}</option>
+                           @foreach($level as $levels)
+                                <option name="{{$levels->name}}" value="{{$levels->id}}">{{$levels->name}}</option>
                            @endforeach
                         </select>
                     </div>
@@ -52,8 +52,13 @@
                         <input type="text" name="salary" class="form-control">
                     </div>
                     <div class="col">
-                        <label for="">Level</label>
-                        <input type="text" name="salary" class="form-control">
+                        <label for="">Categories</label>
+                        <select name="category" class="form-select form-select-lg mb-3" aria-label="Large select example">
+                            <option selected>Open this select menu</option>
+                            @foreach($category as $categories)
+                                <option name="{{$categories->name}}" value="{{$categories->id}}">{{$categories->name}}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <div class="mt-4 row">

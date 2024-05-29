@@ -77,6 +77,9 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('/admin/search/career',[AdminController::class,'search_career']);
     Route::get('/admin/apply/index',[AdminController::class,'index'])->name('Admin/apply/view');
     Route::get('/admin/testing/index',[AdminController::class,'test_index']);
-    Route::get('/admin/level',[AdminController::class,'level']);
+    Route::get('/admin/level',[\App\Http\Controllers\LevelController::class,'level']);
+    Route::post('/admin/create/level',[\App\Http\Controllers\LevelController::class,'create']);
+    Route::post('/admin/update/level/{id}',[\App\Http\Controllers\LevelController::class,'update']);
+    Route::get('/admin/delete/level/{id}',[\App\Http\Controllers\LevelController::class,'delete']);
 
 });

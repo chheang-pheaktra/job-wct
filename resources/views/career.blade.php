@@ -22,6 +22,7 @@
            <tr>
                <th scope="col">ID</th>
                <th scope="col">Category Name</th>
+               <th scope="col">Level</th>
                <th scope="col">Company</th>
                <th scope="col">Position</th>
                <th scope="col">Salary</th>
@@ -35,6 +36,7 @@
                 <tr>
                     <td>{{$career->id}}</td>
                     <td>{{$career->category->name}}</td>
+                    <td>{{$career->level->name}}</td>
                     <td>{{$career->bank_name}}</td>
                     <td>{{$career->position}}</td>
                     <td>{{$career->salary}}</td>

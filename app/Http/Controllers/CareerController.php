@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Career;
 use App\Models\Category;
+use App\Models\Level;
 use DOMDocument;
 use Faker\Core\File;
 use Illuminate\Http\Request;
@@ -22,10 +23,11 @@ class CareerController extends Controller
     }
     public function edit($id)
     {
+        $level=Level::all();
         $career = Career::findOrFail($id); // Find the career by its ID
         $categories = Category::all(); // Fetch categories or any other necessary data
 
-        return view('career_edit', compact('career', 'categories'));
+        return view('career_edit', compact('career', 'categories','level'));
     }
 
     /**
@@ -71,20 +73,34 @@ class CareerController extends Controller
         $career = Career::find($id);
         $description = $request->description;
 
-        // Process the description to handle image uploads
+        // Suppress warnings
+        libxml_use_internal_errors(true);
+
+        // Wrap the description in a div to ensure well-formed HTML
+        $wrappedDescription = '<div>' . $description . '</div>';
+
+        // Load the HTML
         $dom = new DOMDocument();
-        $dom->loadHTML($description, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        $dom->loadHTML($wrappedDescription, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
         $images = $dom->getElementsByTagName('img');
 
         foreach ($images as $key => $img) {
-            if (strpos($img->getAttribute('src'), 'data:image/') === 0) {
-                $data = base64_decode(explode(',', explode(';', $img->getAttribute('src'))[1])[1]);
-                $image_name = "/upload/" . time() . $key . 'png';
+            $src = $img->getAttribute('src');
+            if (strpos($src, 'data:image/') === 0) {
+                // Decode base64 image data
+                $data = base64_decode(explode(',', explode(';', $src)[1])[1]);
+                $image_name = '/upload/' . time() . $key . '.png';
                 file_put_contents(public_path() . $image_name, $data);
                 $img->removeAttribute('src');
                 $img->setAttribute('src', $image_name);
             }
         }
+
+        // Save the updated HTML content back to the description variable
+        $description = $dom->saveHTML($dom->getElementsByTagName('div')->item(0));
+
+        // Clear any errors
+        libxml_clear_errors();
 
         // Validate and handle the new image upload
         $request->validate([
@@ -99,16 +115,17 @@ class CareerController extends Controller
         } else {
             $imagePath = $career->thumbnail; // Keep the existing thumbnail
         }
-
         // Update the career record
         $career->update([
+            'category_id'=>$request->category,
+            'level_id'=>$request->level,
             'bank_name' => $request->bank,
             'position' => $request->position,
             'salary' => $request->salary,
             'location' => $request->location,
             'available_position' => $request->post,
             'thumbnail' => $imagePath,
-            'description' => $dom->saveHTML(),
+            'description' => $description,
         ]);
 
         return redirect('/admin/career');

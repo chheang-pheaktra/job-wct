@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Career;
 use App\Models\Category;
+use App\Models\Level;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -22,8 +23,9 @@ class UserController extends Controller
     public function job()
     {
         $categories=Category::get();
+        $level=Level::all();
         $jobs=Career::OrderBy('created_at','asc')->paginate(6);
-        return view('job/index',compact('jobs','categories'));
+        return view('job/index',compact('jobs','categories','level'));
     }
     public function view_job($id)
     {

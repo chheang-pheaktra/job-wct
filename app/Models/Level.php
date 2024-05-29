@@ -11,4 +11,9 @@ class Level extends Model
     protected $fillable=[
         'name'
     ];
+    public function careers()
+    {
+        return $this->hasMany(Career::class);
+    }
+
 }

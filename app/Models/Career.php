@@ -23,4 +23,9 @@ class Career extends Model
     {
         return $this->belongsTo(Category::class,);
     }
+    public function level()
+    {
+        return $this->belongsTo(Level::class,);
+    }
+
 }
