@@ -26,8 +26,8 @@
                             </select>
                             <select  name="jobs" class=" h-10 border-2 border-sky-500 focus:outline-none focus:border-sky-500 text-sky-500 rounded px-2 md:px-3 py-0 md:py-1 tracking-wider">
                                 <option value="All" selected="">Level</option>
-                                @foreach($categories as $category)
-                                    <option value="{{$category->id}}" >{{$category->name}}</option>
+                                @foreach($level as $levels)
+                                    <option value="{{$levels->id}}" >{{$levels->name}}</option>
                                 @endforeach
                             </select>
                         </div>

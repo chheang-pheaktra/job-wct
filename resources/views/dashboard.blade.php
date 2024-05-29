@@ -55,8 +55,8 @@
                                 </path>
                             </svg></div>
                <div class="px-4 text-gray-700">
-                            <h3 class="text-sm tracking-wider">Server Load</h3>
-                            <p class="text-3xl">34.12%</p>
+                            <h3 class="text-sm tracking-wider">Apply</h3>
+                            <p class="text-3xl">1000</p>
                         </div>
                     </div>
                 </div>

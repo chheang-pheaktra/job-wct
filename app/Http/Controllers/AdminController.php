@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Apply;
 use App\Models\Career;
 use App\Models\Category;
 use App\Models\Level;
@@ -45,7 +46,10 @@ class AdminController extends Controller
     }
     public function index()
     {
-        return view('apply/index');
+        $apply=Apply::all();
+        $career=Career::all();
+        $user=User::all();
+        return view('apply/index',compact('apply','career','user'));
     }
     public function search(Request $request)
     {
@@ -69,4 +73,5 @@ class AdminController extends Controller
     {
         return view('testing/index');
     }
+
 }

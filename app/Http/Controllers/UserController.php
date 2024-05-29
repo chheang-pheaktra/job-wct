@@ -30,7 +30,8 @@ class UserController extends Controller
     public function view_job($id)
     {
         $jobs=Career::find($id);
-        return view('job/view_job',compact('jobs'));
+        $level=Level::all();
+        return view('job/view_job',compact('jobs','level'));
     }
     public function view_category($id)
     {
@@ -56,26 +57,5 @@ class UserController extends Controller
     {
         return view('/menu-profile/setting');
     }
-    public function apply(Request $request, $id)
-    {
-        $request->validate([
-            'cv' => 'required|mimes:pdf,doc,docx|max:2048',
-        ]);
 
-        $jobs = Career::findOrFail($id);
-
-        // Handle file upload
-        if ($request->hasFile('cv')) {
-            $cvPath = $request->file('cv')->store('cvs', 'public');
-
-            // Save application to the database
-            Application::create([
-                'job_id' => $job->id,
-                'user_id' => auth()->id(), // Assuming the user is authenticated
-                'cv' => $cvPath,
-            ]);
-        }
-
-        return redirect()->route('jobs.show', $jobs->id)->with('success', 'Your application has been submitted successfully!');
-    }
 }

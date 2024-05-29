@@ -71,6 +71,12 @@
                 <tr>
                     <td class="px-6 py-4 whitespace-nowrap">{{$levels->id}}</td>
                     <td class="px-6 py-4 whitespace-nowrap">{{$levels->name}}</td>
+                    <td class="px-6 py-4 whitespace-norwrap">
+                        @php
+                            $jobCount =$job->where('level_id', $levels->id)->count();
+                        @endphp
+                        {{$jobCount}} Jobs
+                    </td>
                     <td class="px-6 py-4 whitespace-nowrap">
                             <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">{{date('d-m-y', strtotime($levels->created_at))}}</span>
                     </td>

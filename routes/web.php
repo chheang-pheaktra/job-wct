@@ -52,7 +52,7 @@ Route::controller(\App\Http\Controllers\Auth\ForgotPasswordController::class)->g
     Route::get('/jobs/view/{id}',[UserController::class,'view_job']);
     Route::get('/category',[UserController::class,'category']);
     Route::get('/setting',[UserController::class,'setting']);
-    Route::post('/jobs/{job}/apply', [UserController::class, 'apply'])->name('job.apply');
+    Route::post('/apply/{user_id}/job/{job_id}', [\App\Http\Controllers\ApplyController::class, 'apply'])->name('job.apply');
 
     });
 
@@ -81,5 +81,7 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::post('/admin/create/level',[\App\Http\Controllers\LevelController::class,'create']);
     Route::post('/admin/update/level/{id}',[\App\Http\Controllers\LevelController::class,'update']);
     Route::get('/admin/delete/level/{id}',[\App\Http\Controllers\LevelController::class,'delete']);
+    Route::get('/applications/{id}/download-cv', [\App\Http\Controllers\ApplyController::class, 'downloadCv'])->name('applications.downloadCv');
+    Route::get('/applications/{id}/view-cv', [\App\Http\Controllers\ApplyController::class, 'viewCv'])->name('applications.viewCv');
 
 });

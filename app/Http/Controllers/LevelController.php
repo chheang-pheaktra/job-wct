@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Career;
 use App\Models\Level;
 use Illuminate\Http\Request;
 
@@ -9,8 +10,9 @@ class LevelController extends Controller
 {
     public function level()
     {
+        $job=Career::all();
         $level=Level::all();
-        return view('level',compact('level'));
+        return view('level',compact('level','job'));
     }
     public function create(Request $request)
     {
