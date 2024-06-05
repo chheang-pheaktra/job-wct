@@ -1,5 +1,5 @@
-<title>Jobs</title>
 @extends('layout.user')
+<title>Jobs</title>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 <script src="https://cdn.tailwindcss.com"></script>
@@ -54,8 +54,13 @@
             </section>
             <h1 class="text-2xl mt-10 font-bold">All Jobs</h1>
             <section class="mt-10 mx-auto w-full max-w-screen-xl grid grid-cols-1 gap-6 text-black md:grid-cols-3">
-                @foreach($jobs as $job)
-                        <a href="{{url('/jobs/view/' .$job->id)}}">
+                @if($jobs->isEmpty())
+                    <div class="w-1/2 mx-auto mt-10 md:ml-96 md:w-11/12">
+                        <img class="" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9Q0TOXHGoPsoJ5Xf5YmFgJGy6FF0EhMR_-A&s">
+                    </div>
+                @else
+                    @foreach($jobs as $job)
+                        <a href="{{ url('/jobs/view/' . $job->id) }}">
                             <div class="max-w-sm bg-white border border-gray-100 rounded-lg shadow hover:shadow-lg hover:shadow-blue-100 hover:scale-110 hover:ease-in-out hover:duration-500">
                                 <img class="rounded-lg w-full h-48 object-cover" src="{{ asset($job->thumbnail) }}" alt="{{ $job->position }}">
                                 <div class="p-10">
@@ -81,7 +86,8 @@
                                 </div>
                             </div>
                         </a>
-                @endforeach
+                    @endforeach
+                @endif
             </section>
             <section class="mt-10 ">
                 {!! $jobs->links() !!}

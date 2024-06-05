@@ -27,5 +27,13 @@ class Career extends Model
     {
         return $this->belongsTo(Level::class,);
     }
+    public function question()
+    {
+        return $this->hasMany(Question::class);
+    }
+    public function quiz()
+    {
+        return $this->hasMany(Quiz::class);
+    }
 
 }

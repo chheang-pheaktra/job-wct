@@ -6,6 +6,7 @@ use App\Models\Apply;
 use App\Models\Career;
 use App\Models\Category;
 use App\Models\Level;
+use App\Models\Quiz;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -71,7 +72,8 @@ class AdminController extends Controller
 
     public function test_index()
     {
-        return view('testing/index');
+       $quizzes=Quiz::all();
+       return view('/testing/index',compact('quizzes'));
     }
 
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Career;
 use App\Models\Category;
 use App\Models\Level;
+use App\Models\Quiz;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -62,6 +63,11 @@ class UserController extends Controller
     public function setting()
     {
         return view('/menu-profile/setting');
+    }
+    public function testing()
+    {
+        $quizzes = Quiz::all();
+        return view('QuizUser/index',compact('quizzes'));
     }
 
 }

@@ -3,7 +3,6 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
     <div class="mt-14">
 
@@ -117,15 +116,6 @@
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-gray-400 group-hover:text-gray-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15" />
                                         </svg>
-
-                                      {{--  <svg class="text-gray-400 group-hover:text-gray-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6"
-                                             x-state-description="undefined: &quot;text-teal-500 group-hover:text-teal-500&quot;, undefined: &quot;text-gray-400 group-hover:text-gray-500&quot;"
-                                             x-description="Heroicon name: outline/squares-plus" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                             viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                  d="M13.5 16.875h3.375m0 0h3.375m-3.375 0V13.5m0 3.375v3.375M6 10.5h2.25a2.25 2.25 0 002.25-2.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v2.25A2.25 2.25 0 006 10.5zm0 9.75h2.25A2.25 2.25 0 0010.5 18v-2.25a2.25 2.25 0 00-2.25-2.25H6a2.25 2.25 0 00-2.25 2.25V18A2.25 2.25 0 006 20.25zm9.75-9.75H18a2.25 2.25 0 002.25-2.25V6A2.25 2.25 0 0018 3.75h-2.25A2.25 2.25 0 0013.5 6v2.25a2.25 2.25 0 002.25 2.25z">
-                                            </path>
-                                        </svg>--}}
                                         <span class="truncate">Log out</span>
                                     </a>
 
@@ -147,7 +137,7 @@
                                                 <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
                                                 <div class="mt-1 flex rounded-md shadow-sm">
                                                     <span class="inline-flex items-center rounded-l-md border border-r-0 border-gray-300 bg-gray-50 px-3 text-gray-500 sm:text-sm">workcation.com/</span>
-                                                    <input type="text" name="username" id="username" autocomplete="username" class="block w-full min-w-0 flex-grow rounded-none rounded-r-md border-gray-300 focus:border-sky-500 focus:ring-sky-500 sm:text-sm" value="deblewis">
+                                                    <input type="text" name="username" id="username" autocomplete="username" class="block w-full min-w-0 flex-grow rounded-none rounded-r-md border-gray-300 focus:border-sky-500 focus:ring-sky-500 sm:text-sm" value="{{auth()->user()->name}}">
                                                 </div>
                                             </div>
 
@@ -216,63 +206,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Privacy section -->
-                                <div class="divide-y divide-gray-200 pt-6">
-                                    <div class="px-4 sm:px-6">
-                                        <div>
-                                            <h2 class="text-lg font-medium leading-6 text-gray-900">Privacy</h2>
-                                            <p class="mt-1 text-sm text-gray-500">Ornare eu a volutpat eget vulputate. Fringilla commodo amet.
-                                            </p>
-                                        </div>
-                                        <ul role="list" class="mt-2 divide-y divide-gray-200">
-                                            <li class="flex items-center justify-between py-4" x-data="{ on: true }">
-                                                <div class="flex flex-col">
-                                                    <p class="text-sm font-medium text-gray-900" id="privacy-option-1-label">Available to hire</p>
-                                                    <p class="text-sm text-gray-500" id="privacy-option-1-description">Nulla amet tempus sit
-                                                        accumsan. Aliquet turpis sed sit lacinia.</p>
-                                                </div>
-                                                <button type="button" class="bg-gray-200 relative ml-4 inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2" role="switch" aria-checked="true" x-ref="switch" x-state:on="Enabled" x-state:off="Not Enabled" :class="{ 'bg-teal-500': on, 'bg-gray-200': !(on) }" aria-labelledby="privacy-option-1-label" aria-describedby="privacy-option-1-description" :aria-checked="on.toString()" @click="on = !on">
-                                                    <span aria-hidden="true" class="translate-x-0 inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out" x-state:on="Enabled" x-state:off="Not Enabled" :class="{ 'translate-x-5': on, 'translate-x-0': !(on) }"></span>
-                                                </button>
-                                            </li>
-                                            <li class="flex items-center justify-between py-4" x-data="{ on: false }">
-                                                <div class="flex flex-col">
-                                                    <p class="text-sm font-medium text-gray-900" id="privacy-option-2-label">Make account private
-                                                    </p>
-                                                    <p class="text-sm text-gray-500" id="privacy-option-2-description">Pharetra morbi dui mi mattis
-                                                        tellus sollicitudin cursus pharetra.</p>
-                                                </div>
-                                                <button type="button" class="bg-gray-200 relative ml-4 inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2" role="switch" aria-checked="false" x-ref="switch" x-state:on="Enabled" x-state:off="Not Enabled" :class="{ 'bg-teal-500': on, 'bg-gray-200': !(on) }" aria-labelledby="privacy-option-2-label" aria-describedby="privacy-option-2-description" :aria-checked="on.toString()" @click="on = !on">
-                                                    <span aria-hidden="true" class="translate-x-0 inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out" x-state:on="Enabled" x-state:off="Not Enabled" :class="{ 'translate-x-5': on, 'translate-x-0': !(on) }"></span>
-                                                </button>
-                                            </li>
-                                            <li class="flex items-center justify-between py-4" x-data="{ on: true }">
-                                                <div class="flex flex-col">
-                                                    <p class="text-sm font-medium text-gray-900" id="privacy-option-3-label">Allow commenting</p>
-                                                    <p class="text-sm text-gray-500" id="privacy-option-3-description">Integer amet, nunc hendrerit
-                                                        adipiscing nam. Elementum ame</p>
-                                                </div>
-                                                <button type="button" class="bg-gray-200 relative ml-4 inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2" role="switch" aria-checked="true" x-ref="switch" x-state:on="Enabled" x-state:off="Not Enabled" :class="{ 'bg-teal-500': on, 'bg-gray-200': !(on) }" aria-labelledby="privacy-option-3-label" aria-describedby="privacy-option-3-description" :aria-checked="on.toString()" @click="on = !on">
-                                                    <span aria-hidden="true" class="translate-x-0 inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out" x-state:on="Enabled" x-state:off="Not Enabled" :class="{ 'translate-x-5': on, 'translate-x-0': !(on) }"></span>
-                                                </button>
-                                            </li>
-                                            <li class="flex items-center justify-between py-4" x-data="{ on: true }">
-                                                <div class="flex flex-col">
-                                                    <p class="text-sm font-medium text-gray-900" id="privacy-option-4-label">Allow mentions</p>
-                                                    <p class="text-sm text-gray-500" id="privacy-option-4-description">Adipiscing est venenatis enim
-                                                        molestie commodo eu gravid</p>
-                                                </div>
-                                                <button type="button" class="bg-gray-200 relative ml-4 inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2" role="switch" aria-checked="true" x-ref="switch" x-state:on="Enabled" x-state:off="Not Enabled" :class="{ 'bg-teal-500': on, 'bg-gray-200': !(on) }" aria-labelledby="privacy-option-4-label" aria-describedby="privacy-option-4-description" :aria-checked="on.toString()" @click="on = !on">
-                                                    <span aria-hidden="true" class="translate-x-0 inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out" x-state:on="Enabled" x-state:off="Not Enabled" :class="{ 'translate-x-5': on, 'translate-x-0': !(on) }"></span>
-                                                </button>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="mt-4 flex justify-end py-4 px-4 sm:px-6">
-                                        <button type="button" class="inline-flex justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2">Cancel</button>
-                                        <button type="submit" class="ml-5 inline-flex justify-center rounded-md border border-transparent bg-blue-900 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2">Save</button>
-                                    </div>
-                                </div>
                             </form>
                         </div>
                     </div>

@@ -12,7 +12,7 @@ class HomeController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+      $this->middleware('auth')->except('index');
     }
 
     public function index()
@@ -24,7 +24,7 @@ class HomeController extends Controller
     public function adminHome()
     {
         $apply=Apply::all();
-        $users=User::all();
+        $users=User::OrderBy('created_at','asc')->paginate(8);
         $job=Career::all();
         $category=Category::all();
         return view('dashboard',compact('users','job','category','apply'));

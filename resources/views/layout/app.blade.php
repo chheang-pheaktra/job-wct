@@ -10,10 +10,11 @@
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
-<header class="px-4 py-2 shadow">
+<header class="px-4 py-2 bg-gray-200 shadow fixed left-0 right-0 top-0 z-10">
     <div class="flex justify-between">
         <div class="flex items-center">
             <button data-menu class="p-4 -ml-3 focus:outline-none" type="button">
@@ -73,10 +74,10 @@
     </div>
 </header>
 
-<div class="flex flex-row">
+<div class="flex flex-row mt-16">
     <div class="flex flex-col w-64 overflow-y-auto bg-gray-900 border-r rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700">
         <div class="sidebar text-center bg-gray-900">
-            <div class="text-gray-100 text-xl">
+            <div class="text-gray-100 text-xl mt-10">
                 <div class="p-2.5 mt-1 flex items-center">
                     <i class="bi bi-app-indicator px-2 py-1 rounded-md bg-blue-600"></i>
                     <h1 class="font-bold text-gray-200 text-[15px] ml-3">Admin</h1>
@@ -121,14 +122,70 @@
                     <span class="text-[15px] ml-4 text-gray-200 font-bold">Level</span>
                 </div>
             </a>
-            <a href="{{url('admin/testing/index') }}">
-                <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-book-fill" viewBox="0 0 16 16">
-                        <path d="M8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783"/>
-                    </svg>
-                    <span class="text-[15px] ml-4 text-gray-200 font-bold">Test</span>
-                </div>
-            </a>
+            <ul class="flex flex-col gap-2 max-w-[280px] mx-auto mt-4 ">
+                <li class="cursor-pointer ">
+                    <details class="group">
+                        <summary
+                            class="flex items-center justify-between gap-2 p-2 font-medium marker:content-none hover:cursor-pointer">
+
+                    <span class="flex gap-2">
+                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 w-6 h-6 text-white ml-2">
+                         <path d="M21.731 2.269a2.625 2.625 0 0 0-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 0 0 0-3.712ZM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 0 0-1.32 2.214l-.8 2.685a.75.75 0 0 0 .933.933l2.685-.8a5.25 5.25 0 0 0 2.214-1.32L19.513 8.2Z" />
+                        </svg>
+
+                        <span class="text-white ml-1">
+                            Test
+                        </span>
+                    </span>
+                        </summary>
+                        <article class="px-4 pb-4">
+                            <ul class="flex flex-col gap-4 pl-2 mt-2">
+                                <li class="flex gap-2  hover:bg-blue-600 text-white rounded-lg">
+                                    <a href="{{url('admin/testing/index') }}">
+                                        <div class="p-2.5 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 w-6 h-6 ">
+                                                <path fill-rule="evenodd" d="M16.72 7.72a.75.75 0 0 1 1.06 0l3.75 3.75a.75.75 0 0 1 0 1.06l-3.75 3.75a.75.75 0 1 1-1.06-1.06l2.47-2.47H3a.75.75 0 0 1 0-1.5h16.19l-2.47-2.47a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                                            </svg>
+                                            <span class="text-[15px] ml-4 text-gray-200 font-bold">Quiz</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="flex gap-2  hover:bg-blue-600 text-white rounded-lg">
+                                    <a href="{{url('/admin/testing/question/index') }}">
+                                        <div class="p-2.5 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 w-6 h-6 ">
+                                                <path fill-rule="evenodd" d="M16.72 7.72a.75.75 0 0 1 1.06 0l3.75 3.75a.75.75 0 0 1 0 1.06l-3.75 3.75a.75.75 0 1 1-1.06-1.06l2.47-2.47H3a.75.75 0 0 1 0-1.5h16.19l-2.47-2.47a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                                            </svg>
+                                            <span class="text-[15px] ml-4 text-gray-200 font-bold">Question</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="flex gap-2  hover:bg-blue-600 text-white rounded-lg">
+                                    <a href="{{url('/admin/testing/choice/index') }}">
+                                        <div class="p-2.5 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 w-6 h-6 ">
+                                                <path fill-rule="evenodd" d="M16.72 7.72a.75.75 0 0 1 1.06 0l3.75 3.75a.75.75 0 0 1 0 1.06l-3.75 3.75a.75.75 0 1 1-1.06-1.06l2.47-2.47H3a.75.75 0 0 1 0-1.5h16.19l-2.47-2.47a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                                            </svg>
+                                            <span class="text-[15px] ml-4 text-gray-200 font-bold">Choice</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="flex gap-2  hover:bg-blue-600 text-white rounded-lg">
+                                    <a href="{{url('/admin/view/user_responses') }}">
+                                        <div class="p-2.5 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 w-6 h-6 ">
+                                                <path fill-rule="evenodd" d="M16.72 7.72a.75.75 0 0 1 1.06 0l3.75 3.75a.75.75 0 0 1 0 1.06l-3.75 3.75a.75.75 0 1 1-1.06-1.06l2.47-2.47H3a.75.75 0 0 1 0-1.5h16.19l-2.47-2.47a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                                            </svg>
+                                            <span class="text-[15px] ml-4 text-gray-200 font-bold">Response</span>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </article>
+
+                    </details>
+                </li>
+            </ul>
             <a href="{{ url('admin/profile') }}">
                 <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">

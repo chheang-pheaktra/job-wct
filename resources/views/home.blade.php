@@ -51,22 +51,26 @@
                     <h2 class="text-center font-display text-3xl font-bold tracking-tight text-slate-600 md:text-4xl">
                         Categories job
                     </h2>
-                    <ul class="mt-10 grid grid-cols-1 items-center gap-6 text-center text-blue-900 md:grid-cols-3">
-                        @foreach($categories as $category)
-                            @php
-                                $jobCount = $jobs->where('category_id', $category->id)->count();
-                             @endphp
-                            <a href="{{ url('category_view/' . $category->id . '/' . $category->name) }}">
-                                <li class="bg-blue-900 rounded-xl px-6 py-8 shadow-lg hover:scale-110 hover:duration-500">
-                                    <h3 class="my-3 text-lg font-display font-medium text-white">{{ $category->name }}</h3>
-                                    <p class="mt-1.5 text-sm leading-6 text-secondary-500 text-white">
-                                        {{ $jobCount }} Jobs
-                                    </p>
-                                </li>
-                            </a>
+                    @if($categories->isEmpty())
+                       <p class="text-center mt-4 font-bold">No data</p>
+                    @else
+                        <ul class="mt-10 grid grid-cols-1 items-center gap-6 text-center text-blue-900 md:grid-cols-3">
+                            @foreach($categories as $category)
+                                @php
+                                    $jobCount = $jobs->where('category_id', $category->id)->count();
+                                @endphp
+                                <a href="{{ url('category_view/' . $category->id . '/' . $category->name) }}">
+                                    <li class="bg-blue-900 rounded-xl px-6 py-8 shadow-lg hover:scale-110 hover:duration-500">
+                                        <h3 class="my-3 text-lg font-display font-medium text-white">{{ $category->name }}</h3>
+                                        <p class="mt-1.5 text-sm leading-6 text-secondary-500 text-white">
+                                            {{ $jobCount }} Jobs
+                                        </p>
+                                    </li>
+                                </a>
 
-                        @endforeach
-                    </ul>
+                            @endforeach
+                        </ul>
+                    @endif
                 </div>
             </div>
         </section>

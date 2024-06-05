@@ -10,6 +10,7 @@
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
     <nav class="bg-blue-900 border-gray-200 fixed right-0 left-0 top-0 z-10  ">
@@ -52,7 +53,7 @@
                                 </div>
                             </div>
                         @else
-                            <a href="{{ route('login') }}" class="md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse font-semibold text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
+                            <a href="{{ route('login') }}" class="md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse font-semibold text-white ">Log in</a>
                         @endauth
                     @endif
                     <button data-collapse-toggle="navbar-user" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-900 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 " aria-controls="navbar-user" aria-expanded="false">
@@ -70,7 +71,7 @@
                                 <a href="{{'about'}}" class="block py-2 px-3 text-white rounded hover:bg-yellow-100 md:hover:bg-transparent md:hover:text-yellow-400 md:p-0 " >About</a>
                             </li>
                             <li class="border-b lg:border-none md:border-none">
-                                <a href="#" class="block py-2 px-3 text-white rounded hover:bg-yellow-100 md:hover:bg-transparent md:hover:text-yellow-400 md:p-0 ">Test</a>
+                                <a href="{{'/testing'}}" class="block py-2 px-3 text-white rounded hover:bg-yellow-100 md:hover:bg-transparent md:hover:text-yellow-400 md:p-0 ">Test</a>
                             </li>
                             <li class="border-b lg:border-none md:border-none">
                                 <a href="{{'/category'}}" class="block py-2 px-3 text-white rounded hover:bg-yellow-100 md:hover:bg-transparent md:hover:text-yellow-400 md:p-0">Categories</a>
