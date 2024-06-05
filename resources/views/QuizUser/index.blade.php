@@ -5,7 +5,7 @@
 @section('contents')
 <div class="bg-white">
     <header class="bg-blue-900 text-white text-center py-12 mt-24">
-        <h1 class="text-4xl font-bold">Test Your ability</h1>
+        <h1 class="text-4xl font-bold">Test Your Ability</h1>
     </header>
     <section class="text-center py-12 px-4">
         <h2 class="text-2xl font-bold">Get In Touch</h2>
