@@ -20,7 +20,6 @@
                     </div>
                 </a>
             @endforeach
-
         </div>
     </section>
 </div>

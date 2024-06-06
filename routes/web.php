@@ -57,6 +57,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::post('/apply/{user_id}/job/{job_id}', [\App\Http\Controllers\ApplyController::class, 'apply'])->name('job.apply');
     Route::get('/quizzes/{quiz}', [\App\Http\Controllers\UserResponseController::class, 'show']);
     Route::post('/quizzes/{quiz}/responses', [\App\Http\Controllers\UserResponseController::class, 'store'])->name('user_responses.store');
+    Route::get('/quizzes/{quiz}/result/{score}', [\App\Http\Controllers\UserResponseController::class, 'result'])->name('quiz.result');
     });
 
 //Admin Routes List

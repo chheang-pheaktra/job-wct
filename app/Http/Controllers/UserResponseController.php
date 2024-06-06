@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Quiz;
+use App\Models\Choice;
 use App\Models\UserResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,33 +17,33 @@ class UserResponseController extends Controller
             'responses.*' => 'required|exists:choices,id',
         ]);
 
-        \DB::transaction(function () use ($request, $quiz) {
-            foreach ($request->responses as $questionId => $choiceId) {
-                $userResponse = UserResponse::where('user_id', Auth::id())
-                    ->where('quiz_id', $quiz->id)
-                    ->where('questions_id', $questionId)
-                    ->first();
+        $totalScore = 0;
 
-                if ($userResponse) {
-                    // Update existing response
-                    $userResponse->update([
-                        'choice_id' => $choiceId,
-                    ]);
-                } else {
-                    // Create new response
-                    UserResponse::create([
+        \DB::transaction(function () use ($request, $quiz, &$totalScore) {
+            foreach ($request->responses as $questionId => $choiceId) {
+                $choice = Choice::find($choiceId);
+
+                if ($choice && $choice->is_correct) {
+                    $totalScore += $choice->question->score;
+                }
+
+                UserResponse::updateOrCreate(
+                    [
                         'user_id' => Auth::id(),
-                        'category_id' => $quiz->category_id,
-                        'career_id' => $quiz->career_id,
                         'quiz_id' => $quiz->id,
                         'questions_id' => $questionId,
+                    ],
+                    [
                         'choice_id' => $choiceId,
-                    ]);
-                }
+                        'category_id' => $quiz->category_id,
+                        'career_id' => $quiz->career_id,
+                    ]
+                );
             }
         });
 
-        return redirect('/')->with('success', 'Responses saved successfully.');
+        return redirect()->route('quiz.result', ['quiz' => $quiz->id, 'score' => $totalScore])
+            ->with('success', 'Responses saved successfully.');
     }
 
     public function index()
@@ -73,5 +74,14 @@ class UserResponseController extends Controller
         $questions = $quiz->question()->with('choice')->get();
         return view('QuizUser.show', compact('quiz', 'questions'));
     }
+
+    public function result($quizId, $score)
+    {
+        $quiz = Quiz::findOrFail($quizId);
+        $status = $score >= 50 ? 'pass' : 'fail';
+
+        return view('QuizUser.results', compact('quiz', 'score', 'status'));
+    }
 }
+
 
